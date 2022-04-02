@@ -37,7 +37,38 @@ Book::Book(QWidget *parent) : QWidget(parent)
     setLayout(pMain);
 
     connect(m_pCreaterDirPB,&QPushButton::clicked,[=](){createDir();});
+    connect(m_pFlushFilePB,&QPushButton::clicked,[=]{flushFile();});
+}
 
+void Book::updateFileList(const PDU *pdu)
+{
+    if(pdu==NULL)
+        return;
+    QListWidgetItem *pItemTmp = NULL;
+    int row = m_pBookListW->count();
+    while(m_pBookListW->count()>0)
+    {
+        pItemTmp = m_pBookListW->item(row);
+        m_pBookListW->removeItemWidget(pItemTmp);
+        delete pItemTmp;
+        row--;
+    }
+
+    FileInfo *pFileInfo = NULL;
+    int iCount = pdu->uiMsgLen/sizeof(FileInfo);
+    for(int i = 0;i<iCount;i++)
+    {
+        pFileInfo = (FileInfo*)(pdu->caMsg)+i;
+        qDebug()<<pFileInfo->caFileName<<","
+               <<pFileInfo->iFileType;
+        QListWidgetItem *pItem = new QListWidgetItem;
+        if(pFileInfo->iFileType==0)
+            pItem->setIcon(QIcon(QPixmap(":/map/dir.jpg")));
+        else if (pFileInfo->iFileType==1)
+            pItem->setIcon(QIcon(QPixmap(":/map/reg.jpg")));
+        pItem->setText(pFileInfo->caFileName);
+        m_pBookListW->addItem(pItem);
+    }
 }
 
 void Book::createDir()
@@ -65,4 +96,15 @@ void Book::createDir()
     else
         QMessageBox::warning(this,"新建文件夹","新文件夹不能为空");
 
+}
+
+void Book::flushFile()
+{
+    QString strCurPath = TcpClient::getInstance().curPath();
+    PDU* pdu = mkPDU(strCurPath.size()+1);
+    pdu->uiMsgType = ENUM_MSG_TYPE_FLUSH_FILE_REQUEST;
+    strncpy((char*)(pdu->caMsg),strCurPath.toStdString().c_str(),strCurPath.size());
+    TcpClient::getInstance().getTcpSocket().write((char *)pdu,pdu->uiPDULen);
+    free(pdu);
+    pdu = NULL;
 }

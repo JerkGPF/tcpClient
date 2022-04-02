@@ -13,6 +13,7 @@ class Book : public QWidget
 public:
     explicit Book(QWidget *parent = nullptr);
 
+    void updateFileList(const PDU *pdu);
 private:
     QListWidget *m_pBookListW;
     QPushButton *m_pReturnPB;
@@ -30,6 +31,7 @@ signals:
 
 public slots:
     void createDir();
+    void flushFile();
 };
 
 #endif // BOOK_H

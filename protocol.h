@@ -84,7 +84,11 @@ enum ENUM_MSG_TYPE
 
     ENUM_MSG_TYPE_MAX=0x00ffffff
 };
-
+struct FileInfo
+{
+    char caFileName[32];  //文件名字
+    int iFileType;        //文件类型
+};
 struct PDU
 {
     uint uiPDULen;  //总的协议数据单元大小
