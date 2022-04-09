@@ -38,6 +38,7 @@ Book::Book(QWidget *parent) : QWidget(parent)
 
     connect(m_pCreaterDirPB,&QPushButton::clicked,[=](){createDir();});
     connect(m_pFlushFilePB,&QPushButton::clicked,[=]{flushFile();});
+    connect(m_pDelDirPB,&QPushButton::clicked,[=]{delDir();});
 }
 
 void Book::updateFileList(const PDU *pdu)
@@ -107,4 +108,23 @@ void Book::flushFile()
     TcpClient::getInstance().getTcpSocket().write((char *)pdu,pdu->uiPDULen);
     free(pdu);
     pdu = NULL;
+}
+
+void Book::delDir()
+{
+    QString strCurPath = TcpClient::getInstance().curPath();
+    QListWidgetItem *pItem = m_pBookListW->currentItem();
+    if(pItem==NULL)
+        QMessageBox::warning(this,"删除文件","请选择要删除的文件");
+    else {
+       QString strDelName = pItem->text();
+       PDU *pdu = mkPDU(strCurPath.size()+1);
+       pdu->uiMsgType = ENUM_MSG_TYPE_DEL_DIR_REQUEST;
+       strncpy(pdu->caData,strDelName.toStdString().c_str(),strDelName.size());
+       memcpy(pdu->caMsg,strCurPath.toStdString().c_str(),strCurPath.size());
+       TcpClient::getInstance().getTcpSocket().write((char *)pdu,pdu->uiPDULen);
+       free(pdu);
+       pdu = NULL;
+    }
+
 }
