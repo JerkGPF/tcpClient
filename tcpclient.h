@@ -5,44 +5,51 @@
 #include <QFile>
 #include <QTcpSocket>
 #include "protocol.h"
+#include "opewidget.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class TcpClient; }
-QT_END_NAMESPACE
+namespace Ui {
+class TcpClient;
+}
 
 class TcpClient : public QWidget
 {
     Q_OBJECT
 
 public:
-    TcpClient(QWidget *parent = nullptr);
+    explicit TcpClient(QWidget *parent = 0);
     ~TcpClient();
     void loadConfig();
+
     static TcpClient &getInstance();
     QTcpSocket &getTcpSocket();
     QString loginName();
     QString curPath();
+    void setCurPath(QString strCurPath);
 
 public slots:
     void showConnect();
     void recvMsg();
+
 private slots:
-    //void on_sendButton_clicked();
+//    void on_send_pb_clicked();
 
-    void on_loginPushButton_clicked();
+    void on_login_pb_clicked();
 
-    void on_registPushButton_clicked();
+    void on_regist_pb_clicked();
 
-    void on_cancelPushButton_clicked();
+    void on_cancel_pb_clicked();
 
 private:
     Ui::TcpClient *ui;
-    QString mStrIp;
-    quint16 mUsPort;
-    //连接服务器和服务器进行交互
-    QTcpSocket mTcpSocket;
-    QString m_strLoginName;//登录的用户名
+    QString m_strIP;
+    quint16 m_usPort;
+
+    //连接服务器，和服务器数据交互
+    QTcpSocket m_tcpSocket;
+    QString m_strLoginName;
 
     QString m_strCurPath;
+    QFile m_file;
 };
+
 #endif // TCPCLIENT_H

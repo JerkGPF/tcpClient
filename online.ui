@@ -6,18 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>265</width>
-    <height>287</height>
+    <width>226</width>
+    <height>210</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QListWidget" name="onlineListWidget">
+      <widget class="QListWidget" name="online_lw">
        <property name="font">
         <font>
          <pointsize>16</pointsize>
@@ -25,27 +25,32 @@
        </property>
        <item>
         <property name="text">
-         <string>11</string>
+         <string>11111</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>22</string>
+         <string>2222</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>33</string>
+         <string>3333</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>44</string>
+         <string>4444</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>55</string>
+         <string>5555</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6666</string>
         </property>
        </item>
       </widget>
@@ -66,10 +71,10 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="addFriendButton">
+        <widget class="QPushButton" name="addFriend_pb">
          <property name="font">
           <font>
-           <family>Agency FB</family>
+           <family>Arial</family>
            <pointsize>24</pointsize>
           </font>
          </property>

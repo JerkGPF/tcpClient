@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>464</width>
-    <height>314</height>
+    <width>313</width>
+    <height>189</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,48 +17,52 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="nameLabel">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="name_lan">
          <property name="font">
           <font>
-           <family>Agency FB</family>
+           <family>Arial</family>
            <pointsize>20</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>用户名:</string>
+          <string>用户名：</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="nameLineEdit">
+       <item>
+        <widget class="QLineEdit" name="name_le">
          <property name="font">
           <font>
-           <family>Agency FB</family>
+           <family>Arial</family>
            <pointsize>20</pointsize>
           </font>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="pwdLabel">
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="pwd_lab">
          <property name="font">
           <font>
-           <family>Agency FB</family>
+           <family>Arial</family>
            <pointsize>20</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>密     码:</string>
+          <string>密   码：</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="pwdLineEdit">
+       <item>
+        <widget class="QLineEdit" name="pwd_le">
          <property name="font">
           <font>
-           <family>Agency FB</family>
+           <family>Arial</family>
            <pointsize>20</pointsize>
           </font>
          </property>
@@ -67,41 +71,28 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QPushButton" name="loginPushButton">
-         <property name="font">
-          <font>
-           <family>Agency FB</family>
-           <pointsize>24</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>登录</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
+      <widget class="QPushButton" name="login_pb">
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>24</pointsize>
+        </font>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
+       <property name="text">
+        <string>登录</string>
        </property>
-      </spacer>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="registPushButton">
+        <widget class="QPushButton" name="regist_pb">
          <property name="font">
           <font>
-           <family>Agency FB</family>
+           <family>Arial</family>
            <pointsize>16</pointsize>
           </font>
          </property>
@@ -124,10 +115,10 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="cancelPushButton">
+        <widget class="QPushButton" name="cancel_pb">
          <property name="font">
           <font>
-           <family>Agency FB</family>
+           <family>Arial</family>
            <pointsize>16</pointsize>
           </font>
          </property>
@@ -142,6 +133,7 @@
    </item>
   </layout>
  </widget>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>

@@ -2,21 +2,25 @@
 
 OpeWidget::OpeWidget(QWidget *parent) : QWidget(parent)
 {
-    mPListW = new QListWidget(this);
-    mPListW->addItem("好友");
-    mPListW->addItem("图书");
+    m_pListW = new QListWidget(this);
+    m_pListW->addItem("好友");
+    m_pListW->addItem("图书");
 
     m_pFriend = new Friend;
     m_pBook = new Book;
+
     m_pSW = new QStackedWidget;
     m_pSW->addWidget(m_pFriend);
     m_pSW->addWidget(m_pBook);
 
     QHBoxLayout *pMain = new QHBoxLayout;
-    pMain->addWidget(mPListW);
+    pMain->addWidget(m_pListW);
     pMain->addWidget(m_pSW);
+
     setLayout(pMain);
-    connect(mPListW,&QListWidget::currentRowChanged,m_pSW,&QStackedWidget::setCurrentIndex);
+
+    connect(m_pListW, SIGNAL(currentRowChanged(int))
+            , m_pSW, SLOT(setCurrentIndex(int)));
 }
 
 OpeWidget &OpeWidget::getInstance()

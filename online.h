@@ -13,12 +13,13 @@ class Online : public QWidget
     Q_OBJECT
 
 public:
-    explicit Online(QWidget *parent = nullptr);
+    explicit Online(QWidget *parent = 0);
     ~Online();
+
     void showUsr(PDU *pdu);
 
 private slots:
-    void on_addFriendButton_clicked();
+    void on_addFriend_pb_clicked();
 
 private:
     Ui::Online *ui;

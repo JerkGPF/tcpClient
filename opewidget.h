@@ -6,23 +6,26 @@
 #include "friend.h"
 #include "book.h"
 #include <QStackedWidget>
+
 class OpeWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit OpeWidget(QWidget *parent = nullptr);
+    explicit OpeWidget(QWidget *parent = 0);
     static OpeWidget &getInstance();
-    Friend* getFriend();
-    Book* getBook();
+    Friend *getFriend();
+    Book *getBook();
 
 signals:
 
+public slots:
+
 private:
-    QListWidget *mPListW;
+    QListWidget *m_pListW;
     Friend *m_pFriend;
     Book *m_pBook;
-    QStackedWidget *m_pSW;
 
+    QStackedWidget *m_pSW;
 };
 
 #endif // OPEWIDGET_H

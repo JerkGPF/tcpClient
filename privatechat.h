@@ -1,9 +1,8 @@
 #ifndef PRIVATECHAT_H
 #define PRIVATECHAT_H
 
-#include "protocol.h"
-
 #include <QWidget>
+#include "protocol.h"
 
 namespace Ui {
 class PrivateChat;
@@ -14,13 +13,13 @@ class PrivateChat : public QWidget
     Q_OBJECT
 
 public:
-    explicit PrivateChat(QWidget *parent = nullptr);
+    explicit PrivateChat(QWidget *parent = 0);
     ~PrivateChat();
 
     static PrivateChat &getInstance();
-    void setChatName(QString strName);
-    void updateMsg(const PDU* pdu);
 
+    void setChatName(QString strName);
+    void updateMsg(const PDU *pdu);
 
 private slots:
     void on_sendMsg_pb_clicked();
